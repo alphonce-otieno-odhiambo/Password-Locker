@@ -44,11 +44,12 @@ class Creadentials:
                 user_currently = useruser.name
 
                 return user_currently
-    def __innit__(self,account, name, passcord):
+    def __innit__(self,account, name, passcord,site):
         '''A method with instances for user's credentials'''
         self.account = account
         self.name = name
         self.passcord = passcord
+        self.site = site
 
     def save_credentials(self):
         '''saves the credentials class oject details'''
@@ -64,11 +65,25 @@ class Creadentials:
     
     @classmethod
     def displying_credentials(cls, name):
+        '''function to display the credentials'''
         user_credential_list_in = []
         for credentia in cls.creadentials_list_in:
             if credentia.name == name:
                 user_credential_list_in.append(credentia)
                 return user_credential_list_in
+
+    @classmethod
+    def find_by_site(cls, site):
+        for credentia in creadentials_list_in:
+            if credentia.site == site:
+                return credentia
+
+
+    @classmethod
+    def copy_credential(cls,site):
+        '''class credentials that copy's the credentials after site name given'''
+        find_credentia = Creadentials.find_by_site(site)
+        return pyperclip.copy(find_credential.password)
 
 
 
