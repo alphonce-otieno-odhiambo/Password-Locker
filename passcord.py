@@ -55,10 +55,21 @@ class Creadentials:
 
         Creadentials.creadentials_list_in.append(self)
 
+    
     def generate_new_passcord(chara_size=12, charact=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''funtion method that generates a 12 character passcord'''
         generate_passcord = ''.join(random.choice(charact) for in range(chara_size))
         return generate_passcord
+    
+    
+    @classmethod
+    def displying_credentials(cls, name):
+        user_credential_list_in = []
+        for credentia in cls.creadentials_list_in:
+            if credentia.name == name:
+                user_credential_list_in.append(credentia)
+                return user_credential_list_in
+
 
 
     
