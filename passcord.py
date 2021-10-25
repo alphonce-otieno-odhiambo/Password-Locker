@@ -44,12 +44,15 @@ class Creadentials:
                 user_currently = useruser.name
 
                 return user_currently
+
+
     def __innit__(self,account, name, passcord,site):
         '''A method with instances for user's credentials'''
         self.account = account
         self.name = name
         self.passcord = passcord
         self.site = site
+
 
     def save_credentials(self):
         '''saves the credentials class oject details'''
@@ -71,6 +74,7 @@ class Creadentials:
             if credentia.name == name:
                 user_credential_list_in.append(credentia)
                 return user_credential_list_in
+                
 
     @classmethod
     def find_by_site(cls, site):
