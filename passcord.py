@@ -49,4 +49,9 @@ class Creadentials:
         self.name = name
         self.passcord = passcord
 
+    def save_credentials(self):
+        '''saves the credentials class oject details'''
+        
+        Creadentials.creadentials_list_in.append(self)
+
 
