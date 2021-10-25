@@ -1,5 +1,6 @@
 import random
 import pyperclip
+import string
 '''import the modules '''
 class User:
     
@@ -51,7 +52,20 @@ class Creadentials:
 
     def save_credentials(self):
         '''saves the credentials class oject details'''
-        
+
         Creadentials.creadentials_list_in.append(self)
+
+    def generate_new_passcord(chara_size=12, charact=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+        '''funtion method that generates a 12 character passcord'''
+        generate_passcord = ''.join(random.choice(charact) for in range(chara_size))
+        return generate_passcord
+
+
+    
+
+
+    
+    
+        
 
 
