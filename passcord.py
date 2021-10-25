@@ -18,3 +18,11 @@ class User:
     '''create a methord for saving the object'''
         User.user_list_in.append(self)
 
+    @classmethod
+    def display_user(cls):
+        return cls.user_list_in
+    '''class method that returns the user details'''
+
+    def delete_user(self):
+        User.user_list_in.remove(self)
+
