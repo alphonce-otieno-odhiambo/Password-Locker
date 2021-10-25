@@ -15,7 +15,7 @@ class User:
         
     
     def save_user(self):
-    '''create a methord for saving the object'''
+        '''create a methord for saving the object'''
         User.user_list_in.append(self)
 
     @classmethod
@@ -25,4 +25,24 @@ class User:
 
     def delete_user(self):
         User.user_list_in.remove(self)
+
+class Creadentials:
+
+    ''' class for account creation, generation of passcords and saving infors'''
+    creadentials_list_in = []
+
+
+    @classmethod
+    def checkin_user(cls):
+        '''method that checks if the details entered are similar to the one in user_list_in'''
+
+        user_currently = ''
+
+        for useruser in User.user_list_in:
+            if(useruser.name == name and useruser.passcord == passcord):
+                user_currently = useruser.name
+
+                return user_currently
+                
+
 
