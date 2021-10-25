@@ -43,6 +43,10 @@ class Creadentials:
                 user_currently = useruser.name
 
                 return user_currently
-                
+    def __innit__(self,account, name, passcord):
+        '''A method with instances for user's credentials'''
+        self.account = account
+        self.name = name
+        self.passcord = passcord
 
 
