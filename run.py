@@ -35,5 +35,35 @@ def disply_credentials(name):
 def copy_credentials(site):
     '''copys credentials to the clipboard'''
     return Credentials.copy_credentials(site)
-    
+
+def main():
+    print("Hello...and Welcome to password locker")
+
+    while True:
+        print("-"*60)
+        print("use these short code to navigate through: \n ca - Create Account \n li - Log In \n ex - Exit")
+        short_code = input("Enter a choice: ").lower().strip()
+
+        if short_code == 'ex':
+            break
+        
+        elif short_code == 'ca':
+            print("-"*60)
+            print('To ccreate new account: ')
+            name = input("Enter user name - ").strip()
+            passcord = input("Enter your passcord- ").strip
+            save_user(creat_user(name, passcord))
+            print(" ")
+
+
+        elif short_code == 'li':
+            print("-"*60)
+            print("To log in enter your account details: ")
+            name = input("fill your name - ")
+            passcord = input("fill your your passcord - ")
+            user_existence = verify_my_user(name,passcord)
+            if user_existence == name:
+                print(f'Welcome {name}. would you like to continue? ')
+                while True:
+                    
     
