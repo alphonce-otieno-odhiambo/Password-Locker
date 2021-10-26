@@ -13,7 +13,7 @@ def save_user(user):
     User.save_user(user)
 
 def verify_my_user(name, passcord):
-    ver_user = Credentials.check_user(name,passcord)
+    ver_user = Creadentials.check_user(name,passcord)
 	return ver_user
 
 def generate_passcord():
