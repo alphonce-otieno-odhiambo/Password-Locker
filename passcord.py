@@ -74,7 +74,7 @@ class Creadentials:
             if credentia.name == name:
                 user_credential_list_in.append(credentia)
                 return user_credential_list_in
-                
+
 
     @classmethod
     def find_by_site(cls, site):
