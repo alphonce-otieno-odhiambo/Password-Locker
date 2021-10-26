@@ -91,8 +91,31 @@ def main():
                             elif psw_choice == 'gp':
                                 passcord = generate_passcord()
                                 break
-                            else psw_choice == 'ex':
+                            elif psw_choice == 'ex':
                                 break
+                            else:
+                                print("oow!! Wrong option entered. Please try again")
+                        save_credentials(create_credentials(account, name, passcord, site))
+                        print(f'Credentials Created: site{site} - Account Name:{account} - Passcord:{passcord} ')
+                    elif short_code == 'dc':
+                        if disply_credentials(name):
+                            print("Here is the list of your credentials ")
+                            for credentia in disply_credentials(name):
+                                print(f'Site Name:{credentia.site}- Account Name {credentia.account}- Passcord {credentia.passcord} ')
+                        else:
+                            print("you don't seem to have any credentials yet! ")
+                    elif short_code = 'copy':
+                        site_choosen = input('Enter the site name for the credential passcord to copy: ')
+                        copy_credentials(site_choosen)
+                    else:
+                        print("wooow! Wring option entered ")
+
+            else:
+                print("Wrong option, try gain or create a new account")
+        else:
+            print("-"*60)
+            print("Wrong option entered, please try again")
+
 
 
                         
