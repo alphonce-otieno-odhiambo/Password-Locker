@@ -65,5 +65,17 @@ def main():
             if user_existence == name:
                 print(f'Welcome {name}. would you like to continue? ')
                 while True:
+                    print("-"*60)
+                    print('Onother navigation short codes: \n cc-Create a Credential \n dc-Display Credentials \n copy-Copy Password \n ex-Exit')
+                    short_code = input("fill your choice:").lower().strip()
+                    print("-"*60)
+
+                    if short_code == 'ex':
+                        print(f'goodbye{name}')
+                        break
+
+
+                    elif
                     
+
     
