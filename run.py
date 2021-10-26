@@ -114,7 +114,12 @@ def main():
                 print("Wrong option, try gain or create a new account")
         else:
             print("-"*60)
-            print("Wrong option entered, please try again")
+            print("Wrong option entered, please try again. ")
+
+
+
+if __name__ =='__main__':
+    main()
 
 
 
