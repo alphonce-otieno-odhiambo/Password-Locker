@@ -1,131 +1,102 @@
-#!/usr/bin/env python3.9
-import pyperclip
-from passcord import User, Creadentials
-
-def creat_user(name, passcord):
-    '''creates a new user account'''
-    new_user_user = User(name, passcord)
-    return new_user_user
-
-
+import string
+from random import *
+from passcord import User
+from passcord import Credentials
+def create_user(firstname,lastname,username,userpassword):
+    newuser= User(firstname,lastname,username,userpassword)
+    return newuser
 def save_user(user):
-    '''saves the user's account'''
-    User.save_user(user)
-
-def verify_my_user(name, passcord):
-    ver_user = Creadentials.check_user(name,passcord)
-	return ver_user
-
-def generate_passcord():
-    generat_pscord = Creadentials.generat_pscord()
-    return generat_pscord
-
-def create_credentials(account, name,passcord,site):
-    '''creates a new credentials'''
-    new_credentials = Credentials.(account, name,passcord,site)
-    return new_credentials
-
-def save_credentials(credential):
-    '''saves the new credential'''
-    Credentials.save_credentials(credential)
-
-def disply_credentials(name):
-    '''displays the credentials saved by the user'''
-    return Credentials.disply_credentials(name)
-
-def copy_credentials(site):
-    '''copys credentials to the clipboard'''
-    return Credentials.copy_credentials(site)
-
+    user.save_user()
+def delete_user(user):
+    user.delete_user()
+def find_user(number):
+    return User.find_by_number(number)
+def display_users():
+    return User.display_users()
+def create_account(accountusername,accountname,accountpassword):
+    newaccount= Credentials(accountusername,accountname,accountpassword)
+    return newaccount
+def save_account(user):
+    user.save_account()
+def delete_account(user):
+    user.delete_account()
+def find_account(number):
+    return Credentials.find_by_number(number)
+def display_accounts():
+    return Credentials.display_accounts()
 def main():
-    print("Hello...and Welcome to password locker")
-
-    while True:
-        print("-"*60)
-        print("use these short code to navigate through: \n ca - Create Account \n li - Log In \n ex - Exit")
-        short_code = input("Enter a choice: ").lower().strip()
-
-        if short_code == 'ex':
-            break
-        
-        elif short_code == 'ca':
-            print("-"*60)
-            print('To ccreate new account: ')
-            name = input("Enter user name - ").strip()
-            passcord = input("Enter your passcord- ").strip
-            save_user(creat_user(name, passcord))
-            print(" ")
-
-
-        elif short_code == 'li':
-            print("-"*60)
-            print("To log in enter your account details: ")
-            name = input("fill your name - ")
-            passcord = input("fill your your passcord - ")
-            user_existence = verify_my_user(name,passcord)
-            if user_existence == name:
-                print(f'Welcome {name}. would you like to continue? ')
-                while True:
+        while True:
+            print("Welcome to Passcord  write ...choose the following to start RG for signing up or LG for logging up ")
+            print("RG -or- LG")
+            option=input()
+            if option == "RG":
+                print("Create Account")
+                print("-"*10)
+                print("Enter your First Name..")
+                firstname=input()
+                print("Enter your Last Name..")
+                lastname=input()
+                print("Please Set your username..")
+                username=input()
+                print("Set your password..")
+                userpassword=input()
+                save_user(create_user(firstname,lastname,username,userpassword))
+                print("Your account was created successfully.These are u acc details:")
+                print("-"*10)
+                print(f"Name: {firstname} {lastname} \nUsername: {username} \nPassword: {userpassword}")
+                print("\nUse Login to your account with your details")
+                print("\n \n")
+                # for user in display_users():
+                #     print(f"{user.firstname} {user.lastname}.....{user.username}")
+            elif option =="LG":
+                print(" your Username..")
+                loginUsername=input()
+                print("your Password..")
+                loginPassword=input()
+                if find_user(loginPassword):
+                    print("\n")
+                    print("your can create multipe accounts (MAC) and also view them (MVC)")
                     print("-"*60)
-                    print('Onother navigation short codes: \n cc-Create a Credential \n dc-Display Credentials \n copy-Copy Password \n ex-Exit')
-                    short_code = input("fill your choice:").lower().strip()
-                    print("-"*60)
-
-                    if short_code == 'ex':
-                        print(f'goodbye{name}')
-                        break
-
-
-                    elif short_code == 'cc':
-                        print("-"*60)
-                        print("Enter your credential details: ")
-                        site = input("enter your site name ").strip()
-                        account = input("Enter your account name: ").strip()
-                        while True:
-                            print("-"*60)
-                            print('Please choose an option for entering a password: \n ep-enter existing password \n gp-generate a password \n ex-exit')
-							psw_choice = input('Enter an option: ').lower().strip()
-							print("-"*60)
-                            if psw_choice =='ep':
-                                passcord = input("enter your psscord: ").strip(
-                                break
-                            elif psw_choice == 'gp':
-                                passcord = generate_passcord()
-                                break
-                            elif psw_choice == 'ex':
-                                break
-                            else:
-                                print("oow!! Wrong option entered. Please try again")
-                        save_credentials(create_credentials(account, name, passcord, site))
-                        print(f'Credentials Created: site{site} - Account Name:{account} - Passcord:{passcord} ')
-                    elif short_code == 'dc':
-                        if disply_credentials(name):
-                            print("Here is the list of your credentials ")
-                            for credentia in disply_credentials(name):
-                                print(f'Site Name:{credentia.site}- Account Name {credentia.account}- Passcord {credentia.passcord} ')
+                    print("MAC -or- MVC")
+                    choose= input()
+                    print("\n")
+                    if choose == "MAC":
+                        print("Add Your cred Account")
+                        print("-"*25)
+                        accountusername=loginUsername
+                        print("Account Name")
+                        accountname=input()
+                        print("\n")
+                        print("Generate automatic password(G) or Create new password(C)?")
+                        decision=input()
+                        if decision=="G":
+                            characters=string.ascii_letters + string.digits
+                            accountpassword="".join(choice(characters)for x in range(randint(6,16)))
+                            print(f"Password: {accountpassword}")
+                        elif decision=="C":
+                            print("Enter your Password")
+                            accountpassword=input()
                         else:
-                            print("you don't seem to have any credentials yet! ")
-                    elif short_code = 'copy':
-                        site_choosen = input('Enter the site name for the credential passcord to copy: ')
-                        copy_credentials(site_choosen)
+                            print("please put in a valid choice")
+                        save_account(create_account(accountusername,accountname,accountpassword))
+                        print("\n")
+                        print(f"Username:{accountusername} \nAccount Name: {accountname} \nPassword: {accountpassword}")
+                    elif choose == "VC":
+                        if find_account(accountusername):
+                            print("Here is a list of your created accounts: ")
+                            print("-"*25)
+                            for user in display_accounts():
+                                print(f"Account: {user.accountname} \nPassword: {user.accountpassword} \n\n")
+                        else:
+                            print("Invalid creds!")
                     else:
-                        print("wooow! Wring option entered ")
-
+                        print("PLEASE TRY AGAIN!")
+                        print("\n")
+                else:
+                    print("Incorrect INFO please try again! Thankyou")
+                    print("\n")
             else:
-                print("Wrong option, try gain or create a new account")
-        else:
-            print("-"*60)
-            print("Wrong option entered, please try again. ")
-
-
-
-if __name__ =='__main__':
-    main()
-
-
-
-                        
-
-                    
-
-    
+                print("Kindly choose a valid option")
+                print("\n")
+if __name__ == '__main__':
+     main()

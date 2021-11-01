@@ -1,101 +1,87 @@
 import random
-import pyperclip
 import string
-'''import the modules '''
 class User:
-    
-    '''user class for creating class instances'''
-    user_list_in = []
-    '''user list for storing User objects'''
-
-    
-    def __innit__(self,name, passcord ):
-        '''create an instance of class'''
-        self.name = name
-        self.passcord = passcord
+    """
+    Class that generates new instances of users
+    """
+    userslist=[]
+    def __init__(self,firstname,lastname,username,password):
+        """
+        __init__ method that helps us define properties for our objectsself.
         
-    
+        """
+        self.firstname=firstname
+        self.lastname=lastname
+        self.username=username
+        self.password=password
     def save_user(self):
-        '''create a methord for saving the object'''
-        User.user_list_in.append(self)
-
-    @classmethod
-    def display_user(cls):
-        return cls.user_list_in
-    '''class method that returns the user details'''
-
-    def delete_user(self):
-        User.user_list_in.remove(self)
-
-class Creadentials:
-
-    ''' class for account creation, generation of passcords and saving infors'''
-    creadentials_list_in = []
-
-
-    @classmethod
-    def checkin_user(cls):
-        '''method that checks if the details entered are similar to the one in user_list_in'''
-
-        user_currently = ''
-
-        for useruser in User.user_list_in:
-            if(useruser.name == name and useruser.passcord == passcord):
-                user_currently = useruser.name
-
-                return user_currently
-
-
-    def __innit__(self,account, name, passcord,site):
-        '''A method with instances for user's credentials'''
-        self.account = account
-        self.name = name
-        self.passcord = passcord
-        self.site = site
-
-
-    def save_credentials(self):
-        '''saves the credentials class oject details'''
-
-        Creadentials.creadentials_list_in.append(self)
-
-    
-    def generate_new_passcord(chara_size=12, charact=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-        '''funtion method that generates a 12 character passcord'''
-        generate_passcord = ''.join(random.choice(charact) for in range(chara_size))
-        return generate_passcord
-    
-    
-    @classmethod
-    def displying_credentials(cls, name):
-        '''function to display the credentials'''
-        user_credential_list_in = []
-        for credentia in cls.creadentials_list_in:
-            if credentia.name == name:
-                user_credential_list_in.append(credentia)
-                return user_credential_list_in
-
-
-    @classmethod
-    def find_by_site(cls, site):
-        for credentia in creadentials_list_in:
-            if credentia.site == site:
-                return credentia
-
-
-    @classmethod
-    def copy_credential(cls,site):
-        '''class credentials that copy's the credentials after site name given'''
-        find_credentia = Creadentials.find_by_site(site)
-        return pyperclip.copy(find_credential.password)
-
-
-
-    
-
-
-    
-    
+            """
+            save_user method saves user info into user userslist
+            """
+            User.userslist.append(self)  
         
-
-
+    def delete_user(self):
+        """
+        delete_user method deletes a saved user from the userslist
+        """
+        User.userslist.remove(self)
+    @classmethod
+    def display_users(cls):
+        """
+        method that returns  info from the userlist
+        """
+        return cls.userslist
+    @classmethod
+    def find_by_number(cls,number):
+        """
+        Method that takes in a username and returns a user that matches that number
+        
+        """
+        for user in cls.userslist:
+            if user.password == number:
+                return user
+    @classmethod
+    def user_exist(cls,number):
+        for user in cls.userslist:
+            if user.username == number:
+                return True
+                return False
+class Credentials:
+    """
+    Class that generates new instances of Credentials
+    """
+    accounts=[]
+    def __init__(self,accountusername,accountname,accountpassword):
+        """
+        __init__ method that helps us define properties for our objectsself.
+       
+        """
+        self.accountusername= accountusername
+        self.accountname = accountname
+        self.accountpassword = accountpassword
+    def save_account(self):
+        """
+        save_account method saves user info into accounts
+        """
+        Credentials.accounts.append(self)
+    def delete_account(self):
+        """
+        delete_account method deletes a saved Credential from accounts
+        """
+        Credentials.accounts.remove(self)
+    @classmethod
+    def display_accounts(cls):
+        """
+        method that returns a list of  the accounts
+        """
+        for account in cls.accounts:
+            return cls.accounts
+    @classmethod
+    def find_by_number(cls,number):
+        """
+        Method that takes in a number and returns a contact that matches that number
+        
+        """
+        for account in cls.accounts:
+            if account.accountusername == number:
+                return account 
